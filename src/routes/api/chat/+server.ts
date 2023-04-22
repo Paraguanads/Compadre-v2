@@ -56,7 +56,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			'Eres una asistente virtual sin fines de lucro. Tu nombre es Compadre.'
 		tokenCount += getTokens(prompt)
 
-		if (tokenCount >= 4000) {
+		if (tokenCount >= 2048) {
 			throw new Error('Respuesta muy larga')
 		}
 
@@ -68,7 +68,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		const chatRequestOpts: CreateChatCompletionRequest = {
 			model: 'gpt-3.5-turbo',
 			messages,
-			temperature: 0.9,
+			temperature: 0.2,
 			stream: true
 		}
 
