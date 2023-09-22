@@ -8,13 +8,13 @@
 	<div class="chat-image avatar">
 		<div class="w-10 rounded-full">
 			<img
-				src="https://ui-avatars.com/api/?name={type === 'user' ? 'Yo' : 'B'}"
+				src="https://ui-avatars.com/api/?name={type === 'user' ? 'Yo' : 'C'}"
 				alt="{type} avatar"
 			/>
 		</div>
 	</div>
 	<div class="chat-header">
-		{type === 'user' ? 'Yo' : 'Bot'}
+		{type === 'user' ? 'Yo' : 'Compadre'}
 	</div>
 	<div class="chat-bubble {type === 'user' ? 'chat-bubble-primary' : 'chat-bubble-secondary'}">
 		{message}
