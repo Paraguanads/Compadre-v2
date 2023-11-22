@@ -3,6 +3,11 @@
 	import type { ChatCompletionRequestMessage } from 'openai'
 	import { SSE } from 'sse.js'
 
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+ 
+	inject({ mode: dev ? 'development' : 'production' });
+
 	let query: string = ''
 	let answer: string = ''
 	let loading: boolean = false
