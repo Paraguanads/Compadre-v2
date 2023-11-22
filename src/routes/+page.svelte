@@ -66,7 +66,7 @@
 	<div>
 		<h1 class="text-2xl font-bold w-full text-center">Compadre</h1>
 		<p class="text-sm italic">Con la API gpt-3.5-turbo de OpenAI </p>
-		<p class="text-sm italic text-center">Para ustedes, con ❤ de <a class='font-bold' href="http://paraguanads.online">Para.</a> </p>
+		<p class="text-sm italic text-center">Para ustedes, con ❤ de <a class='font-bold' href="https://eliecer.bio">Para.</a> </p>
 	</div>
 	<div class="h-[500px] w-full bg-gray-900 rounded-md p-4 overflow-y-auto flex flex-col gap-4">
 		<div class="flex flex-col gap-2">
