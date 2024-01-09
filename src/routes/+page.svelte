@@ -21,42 +21,47 @@
 	}
 
 	const handleSubmit = async () => {
-		loading = true
-		chatMessages = [...chatMessages, { role: 'user', content: query }]
+		loading = true;
+
+		// Check if query is a non-empty string before adding to chatMessages
+		if (typeof query === 'string' && query.trim() !== '') {
+			chatMessages = [...chatMessages, { role: 'user', content: query }];
+		}
 
 		const eventSource = new SSE('/api/chat', {
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			payload: JSON.stringify({ messages: chatMessages })
-		})
+		});
 
-		query = ''
+		query = '';
 
-		eventSource.addEventListener('error', handleError)
+		eventSource.addEventListener('error', handleError);
 
 		eventSource.addEventListener('message', (e) => {
-			scrollToBottom()
+			scrollToBottom();
 			try {
-				loading = false
+				loading = false;
 				if (e.data === '[DONE]') {
-					chatMessages = [...chatMessages, { role: 'assistant', content: answer }]
-					answer = ''
-					return
+					chatMessages = [...chatMessages, { role: 'assistant', content: answer }];
+					answer = '';
+					return;
 				}
 
-				const completionResponse = JSON.parse(e.data)
-				const [{ delta }] = completionResponse.choices
+				const completionResponse = JSON.parse(e.data);
+				const [{ delta }] = completionResponse.choices;
 
 				if (delta.content) {
-					answer = (answer ?? '') + delta.content
+					answer = (answer ?? '') + delta.content;
 				}
 			} catch (err) {
-				handleError(err)
+				handleError(err);
 			}
-		})
-		eventSource.stream()
-		scrollToBottom()
+		});
+
+		eventSource.stream();
+		scrollToBottom();
 	}
 
 	function handleError<T>(err: T) {
